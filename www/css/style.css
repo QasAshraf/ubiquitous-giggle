@@ -1,12 +1,16 @@
-.ve-large{
-    font-size:xx-large;
+.ve-large {
+    font-size: xx-large;
 }
 
 .event-item-description {
-    display:inline-block;
+    display: inline-block;
 }
 
 .event-item-icon {
-    display:inline-block;
-    padding:5px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.angular-google-map-container {
+    height: 400px;
 }

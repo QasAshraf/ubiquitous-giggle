@@ -1,28 +1,19 @@
 ﻿<ion-view title="events" ng-controller="eventsController">
-    <ion-content>
-        <h1>Events</h1>
-        <div class="list-group">
-            <div class="list-group-item" ng-repeat="event in events">
-                <i class="icon ion-star ve-large event-item-icon" ></i>
-                <div class="event-item-description">
-                    <h4 class="list-group-item-heading">
-                        {{ event.name }}
-                    </h4>
-                    <p class="list-group-item-text">
-                        {{ event.description }}
-                    </p>
-                    <p class="list-group-item-text">
-                        <strong>
-                            <small>
-                                {{ event.date }}
-                            </small>
-                        </strong>
-                    </p>
-                </div>
-            </div>
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Events</h1>
+    </div>
+    <ion-content class="has-header has-footer">
+        <div data-tap-disabled="true">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                <ui-gmap-marker ng-repeat="event in events" idKey="event.id" 
+                                coords="event.location" click="markerClick(event)">
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
         </div>
-        <button ng-click="getAllEvents()">Get All Events</button>
-
-        <button ng-click="loadTestData()">Load Test Data</button>
     </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-calm" ng-click="getAllEvents()">Get All Events</button>
+        <button class="button button-calm" ng-click="getLocalEvents()">Get Local Events</button>
+        <button class="button button-calm" ng-click="loadTestData()">Load Test Data</button>
+    </div>
 </ion-view>

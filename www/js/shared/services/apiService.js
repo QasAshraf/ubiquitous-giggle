@@ -5,7 +5,29 @@
 
     serviceModule.factory('apiService', function ($http, $q) {
         var service = {};
-        service.baseUrl = 'http://hackmcr.papernweb.com'
+        service.baseUrl = 'http://voluntezy.com'
+
+        service.getEvent = function (eventId) {
+            var deferred = $q.defer();
+            var url = '/event';
+            $http({
+                method: 'GET',
+                url: service.baseUrl + url + '/' + eventId
+            })
+            .then(
+                function (success) {
+                    console.log('apiService - get event');
+                    console.log(success);
+                    deferred.resolve(success.data);
+                },
+                function (error) {
+                    console.log('apiService - get event failed');
+                    console.log(error);
+                    deferred.reject();
+                }
+            )
+            return deferred.promise;
+        }
 
         service.getAllEvents = function () {
             var deferred = $q.defer();
@@ -30,6 +52,28 @@
             return deferred.promise;
         }
 
+        service.getLocalEvents = function (lat, long) {
+            var deferred = $q.defer();
+            var url = '/event/near';
+            $http({
+                method: 'GET',
+                url: service.baseUrl + url + '/' + lat + '/' + long
+            })
+            .then(
+                function (success) {
+                    console.log('apiService - get local events');
+                    console.log(success);
+                    deferred.resolve(success.data);
+                },
+                function (error) {
+                    console.log('apiService - get local events failed');
+                    console.log(error);
+                    deferred.reject();
+                }
+            )
+
+            return deferred.promise;
+        }
 
         service.testMethod = function () {
             console.log('apiService - testMethod');
