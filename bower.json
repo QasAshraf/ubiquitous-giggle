@@ -1,7 +1,8 @@
 {
-  "name": "HelloIonic",
-  "private": "true",
-  "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.1.0"
+  "name": "VolunteasyBower",
+  "private": true,
+  "dependencies": {
+    "ionic": "driftyco/ionic-bower#1.1.0",
+    "Ionicons": "ionicons#~2.0.1"
   }
 }

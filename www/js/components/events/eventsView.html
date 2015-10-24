@@ -1,8 +1,26 @@
 ﻿<ion-view title="events" ng-controller="eventsController">
     <ion-content>
-        <ul>
-            <li ng-repeat="event in events">{{ event.name }}</li>
-        </ul>
+        <h1>Events</h1>
+        <div class="list-group">
+            <div class="list-group-item" ng-repeat="event in events">
+                <i class="icon ion-star ve-large event-item-icon" ></i>
+                <div class="event-item-description">
+                    <h4 class="list-group-item-heading">
+                        {{ event.name }}
+                    </h4>
+                    <p class="list-group-item-text">
+                        {{ event.description }}
+                    </p>
+                    <p class="list-group-item-text">
+                        <strong>
+                            <small>
+                                {{ event.date }}
+                            </small>
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
         <button ng-click="getAllEvents()">Get All Events</button>
 
         <button ng-click="loadTestData()">Load Test Data</button>

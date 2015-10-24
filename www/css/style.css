@@ -1,1 +1,12 @@
-/* Empty. Add your own CSS if you like */
+.ve-large{
+    font-size:xx-large;
+}
+
+.event-item-description {
+    display:inline-block;
+}
+
+.event-item-icon {
+    display:inline-block;
+    padding:5px;
+}
