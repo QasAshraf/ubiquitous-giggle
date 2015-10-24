@@ -1,5 +1,10 @@
-﻿<ion-view title="events">
+﻿<ion-view title="events" ng-controller="eventsController">
     <ion-content>
-        <div>Content goes here.</div>
+        <ul>
+            <li ng-repeat="event in events">{{ event.name }}</li>
+        </ul>
+        <button ng-click="getAllEvents()">Get All Events</button>
+
+        <button ng-click="loadTestData()">Load Test Data</button>
     </ion-content>
 </ion-view>
