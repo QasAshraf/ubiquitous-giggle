@@ -10,5 +10,6 @@ ionic state restore
 
 ## Running
 ```bash
+gulp sass
 ionic run android
 ```
