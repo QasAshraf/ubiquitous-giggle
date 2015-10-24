@@ -12,7 +12,11 @@
             var url = '/event';
             $http({
                 method: 'GET',
-                url: service.baseUrl + url + '/' + eventId
+                url: service.baseUrl + url + '/' + eventId,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: ''
             })
             .then(
                 function (success) {
