@@ -26,6 +26,14 @@
             controller: 'eventController'
         });
 
+        $stateProvider.state('report',
+        {
+            url: '/report',
+            templateUrl: './js/components/report/reportView.html',
+            controller: 'reportController'
+        });
+
+
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyDM822NfUVm9w2queOI47jx6xBEXKRVuZc',
             v: '3.20', //defaults to latest 3.X anyhow

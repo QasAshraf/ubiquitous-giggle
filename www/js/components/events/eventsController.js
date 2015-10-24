@@ -15,7 +15,6 @@
             }, zoom: 8
         };
 
-
         $scope.getLocalEvents = function () {
             console.log('eventsController - Getting local events');
             var posOptions = { timeout: 1000, enableHighAccuracy: true, maximumAge: 360000 };
@@ -62,6 +61,8 @@
                 }
             }
         }
+
+        $scope.getLocalEvents();
 
 
         // Test Logging

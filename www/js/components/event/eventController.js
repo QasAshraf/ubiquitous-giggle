@@ -6,6 +6,8 @@
     controllerModule.controller('eventController', function ($scope, $stateParams, apiService) {
         $scope.event = {};
 
+        $scope.zoom = 8;
+
         apiService.getEvent($stateParams.eventId)
         .then(function (data) {
             $scope.event = data;

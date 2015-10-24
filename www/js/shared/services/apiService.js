@@ -79,6 +79,28 @@
             return deferred.promise;
         }
 
+        service.getReport = function (userId) {
+            var deferred = $q.defer();
+            var url = '/history/report'
+            $http({
+                method: 'GET',
+                url: service.baseUrl + url + '/' + userId
+            })
+            .then(
+                function (success) {
+                    console.log('apiService - get report succeded')
+                    console.log(success);
+                    deferred.resolve(success.data);
+                },
+                function (error) {
+                    console.log('apiService - get report failed')
+                    console.log(error);
+                    deferred.reject();
+                }
+            );
+            return deferred.promise;
+        }
+
         service.testMethod = function () {
             console.log('apiService - testMethod');
         };

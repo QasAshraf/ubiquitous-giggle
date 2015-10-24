@@ -2,10 +2,19 @@
     <div class="bar bar-header bar-light">
         <h1 class="title">{{ event.name }}</h1>
     </div>
-    <ion-content class="has-header">
+    <ion-content class="has-header has-footer">
         <h3>What:</h3>
         <h4>{{ event.description }}</h4>
         <h3>When:</h3>
         <h4>{{ event.date }}</h4>
+        <ui-gmap-google-map center='event.location' zoom='zoom'>
+            <ui-gmap-marker idKey="event.id"
+                            coords="event.location" click="markerClick(event)">
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
     </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-positive" ui-sref="home">All Events</button>
+        <button class="button button-positive" ui-sref="report">My Report</button>
+    </div>
 </ion-view>
