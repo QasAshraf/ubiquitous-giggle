@@ -11,12 +11,6 @@
     "gulp-sass": "^2.0.4",
     "ionic": "^1.7.7"
   },
-  "devDependencies": {
-    "bower": "^1.6.5",
-    "ionic": "^1.7.7",
-    "gulp-util": "^2.2.14",
-    "shelljs": "^0.3.0"
-  },
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
