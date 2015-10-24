@@ -4,6 +4,7 @@
   "dependencies": {
     "ionic": "driftyco/ionic-bower#1.1.0",
     "Ionicons": "ionicons#~2.0.1",
-    "angular-google-maps": "~2.2.1"
+    "angular-google-maps": "~2.2.1",
+    "ngCordova": "~0.1.20-alpha"
   }
 }
