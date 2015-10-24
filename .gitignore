@@ -25,3 +25,9 @@ proguard/
 
 # Log Files
 *.log
+
+# Cordova / ionic files
+node_modules/
+platforms/
+plugins/
+www/lib/
