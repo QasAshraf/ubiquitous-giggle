@@ -1,5 +1,5 @@
 ﻿<ion-view title="event" ng-controller="eventController">
-    <div class="bar bar-header bar-light">
+    <div class="bar bar-header bar-stable">
         <h1 class="title">{{ event.name }}</h1>
     </div>
     <ion-content class="has-header has-footer">
@@ -13,8 +13,8 @@
             </ui-gmap-marker>
         </ui-gmap-google-map>
     </ion-content>
-    <div class="bar bar-footer">
-        <button class="button button-positive" ui-sref="home">All Events</button>
-        <button class="button button-positive" ui-sref="report">My Report</button>
+    <div class="bar bar-footer bar-stable">
+        <button class="button button-light" ui-sref="home">All Events</button>
+        <button class="button button-light" ui-sref="report">My Report</button>
     </div>
 </ion-view>
