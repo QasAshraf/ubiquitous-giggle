@@ -3,7 +3,7 @@
 
     var controllerModule = angular.module('volunteasy.controllers');
 
-    controllerModule.controller('reportController', function ($scope, $state, apiService) {
+    controllerModule.controller('reportController', function ($scope, $state, apiService, appStateService) {
         $scope.events = {};
 
         apiService.getReport('test1')
@@ -15,6 +15,12 @@
 
             }
         )
+
+        $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
+            $scope.loggedIn = isLoggedIn;
+        });
+
+        $scope.logout = function () { appStateService.logOut();  $state.go('home') };
 
         $scope.openEvent = function (eventId) {
             console.log('reportController - Event Clicked!');

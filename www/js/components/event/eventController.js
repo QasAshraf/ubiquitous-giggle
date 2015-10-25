@@ -3,10 +3,16 @@
 
     var controllerModule = angular.module('volunteasy.controllers');
 
-    controllerModule.controller('eventController', function ($scope, $stateParams, $cordovaSocialSharing, apiService) {
+    controllerModule.controller('eventController', function ($scope, $stateParams, $cordovaSocialSharing, apiService, appStateService) {
         $scope.event = {};
 
         $scope.zoom = 12;
+
+        $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
+            $scope.loggedIn = isLoggedIn;
+        });
+
+        $scope.logout = function () { appStateService.logOut(); $state.go('home') };
 
         $scope.twitterShare = function () {
             var message = 'Im going to ' + $scope.event.name;

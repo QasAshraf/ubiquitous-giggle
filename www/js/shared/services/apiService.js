@@ -79,12 +79,12 @@
             return deferred.promise;
         }
 
-        service.getReport = function (userId) {
+        service.getReport = function (deviceId) {
             var deferred = $q.defer();
             var url = '/history/report'
             $http({
                 method: 'GET',
-                url: service.baseUrl + url + '/' + userId
+                url: service.baseUrl + url + '/' + deviceId
             })
             .then(
                 function (success) {
@@ -98,6 +98,68 @@
                     deferred.reject();
                 }
             );
+            return deferred.promise;
+        }
+
+        service.register = function (email, deviceId) {
+            var deferred = $q.defer();
+            var url = '/user/'
+            $http({
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                url: service.baseUrl + url,
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+                data: {
+                    "appbundle_user[user]": deviceId,
+                    "appbundle_user[username]": email
+                }
+            })
+            .then(
+                function (success) {
+                    console.log('apiService - register succeded')
+                    console.log(success);
+                    deferred.resolve();
+                },
+                function (error) {
+                    console.log('apiService - register failed')
+                    console.log(error);
+                    deferred.reject();
+                }
+            );
+            return deferred.promise
+        }
+
+        service.login = function (email) {
+            var deferred = $q.defer();
+            var url = '/user/exists';
+            $http({
+                method: 'GET',
+                url: service.baseUrl + url + '/' + email
+            })
+             .then(
+                 function (success) {
+                     console.log('apiService - exist succeded')
+                     console.log(success);
+
+                     if (success.data.exists)
+                         deferred.resolve();
+                     else
+                         deferred.reject();
+                 },
+                 function (error) {
+                     console.log('apiService - exist failed')
+                     console.log(error);
+                     deferred.reject();
+                 }
+             );
+
             return deferred.promise;
         }
 

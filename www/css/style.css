@@ -11,10 +11,19 @@
     padding: 5px;
 }
 
+
+.event-map .angular-google-map-container {
+    height: 300px;
+}
+
 .angular-google-map-container {
     height: 570px;
 }
 
 .content {
     margin: 10px;
+}
+
+.social-share {
+    margin-bottom:10px;
 }

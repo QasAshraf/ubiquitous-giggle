@@ -3,7 +3,7 @@
 
     var controllerModule = angular.module('volunteasy.controllers');
 
-    controllerModule.controller('eventsController', function ($scope, $cordovaGeolocation, $location, $state, apiService) {
+    controllerModule.controller('eventsController', function ($scope, $cordovaGeolocation, $location, $state, apiService, appStateService) {
         $scope.events = [
 
         ];
@@ -15,14 +15,20 @@
             }, zoom: 12
         };
 
+        $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
+            console.log('loggedin watch');
+            console.log(isLoggedIn);
+            $scope.loggedIn = isLoggedIn;
+        });
+
+        $scope.logout = function () { appStateService.logOut(); $state.go('home') };
+
         $scope.getLocalEvents = function () {
-            console.log('eventsController - Getting local events');
             var posOptions = { timeout: 1000, enableHighAccuracy: true, maximumAge: 360000 };
 
             $cordovaGeolocation
               .getCurrentPosition(posOptions)
               .then(function (position) {
-                  console.log('eventsController - Got location:');
                   var lat = position.coords.latitude
                   var long = position.coords.longitude
                   apiService.getLocalEvents(lat, long)
@@ -50,13 +56,8 @@
         }
 
         $scope.markerClick = function (marker) {
-            console.log('eventsController - Marker Clicked!');
             for (var i = 0; i < $scope.events.length; i++) {
-                console.log('markerid: ' + marker.id);
-                console.log('eventId: ' + $scope.events[i].id);
-                console.log('compare: ' + ($scope.events[i].id == marker.id) );
                 if ($scope.events[i].id == marker.id) {
-                    console.log('eventsController - found event');
                     $state.go('event', { eventId: $scope.events[i].id });
                 }
             }
@@ -66,7 +67,6 @@
 
 
         // Test Logging
-        console.log('eventsController init');
         apiService.testMethod();
 
         //Test Data

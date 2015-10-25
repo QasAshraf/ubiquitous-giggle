@@ -33,6 +33,19 @@
             controller: 'reportController'
         });
 
+        $stateProvider.state('register',
+            {
+                url: '/',
+                templateUrl: './js/components/register/registerView.html',
+                controller: 'registerController'
+            });
+        $stateProvider.state('login',
+            {
+                url: '/',
+                templateUrl: './js/components/login/loginView.html',
+                controller: 'loginController'
+            });
+
 
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyDM822NfUVm9w2queOI47jx6xBEXKRVuZc',
