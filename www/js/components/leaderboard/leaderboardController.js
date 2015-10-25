@@ -10,6 +10,8 @@
             $scope.loggedIn = isLoggedIn;
         });
 
+        $scope.logout = function () { appStateService.logOut(); $state.go('home') };
+
         apiService.getLeaderboard()
             .then(
             function (data) {

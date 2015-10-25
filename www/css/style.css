@@ -11,6 +11,18 @@
     padding: 5px;
 }
 
+.event-icon-container {
+    text-align:center;
+}
+
+.event-icon {
+    width:75px;
+    height: 75px;
+    border-radius:50%;
+    background-image: url("../img/eventIcon.png");
+    background-size:75px;
+    margin:0 auto;
+}
 
 .event-map .angular-google-map-container {
     height: 300px;

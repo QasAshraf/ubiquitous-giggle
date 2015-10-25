@@ -3,22 +3,22 @@
         <h1 class="title">{{ event.name }}</h1>
     </div>
     <ion-content class="has-header has-footer content event-map">
+        <div class="row">
+            <div class="col">
+                <div class="event-icon"></div>
+            </div>
+        </div>
         <h3>What:</h3>
         <h4>{{ event.description }}</h4>
         <h3>When:</h3>
         <h4>{{ event.date }}</h4>
-        <div class="social-share">
-            <button class="button button-light" ng-click="twitterShare()">Twitter</button>
-            <button class="button button-light" ng-click="share()">Share</button>
-            <button class="button button-light" ng-if="loggedIn && notGoing" ng-click="checkIn()">I want to Go!</button>
-            <button class="button button-light" ng-if="loggedIn && !notGoing" >Attending!</button>
-        </div>
-        <div ng-if="showMap" data-tap-disabled="true">
-            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-                <ui-gmap-marker idKey="event.id"
-                                coords="event.location" >
-                </ui-gmap-marker>
-            </ui-gmap-google-map>
+        <h3>Where:</h3>
+        <h4>{{ event.location.address }}</h4>
+        <div class="social-share row">
+            <button class="button button-light col" ng-click="twitterShare()">Tweet</button>
+            <button class="button button-light col" ng-click="share()">Share</button>
+            <button class="button button-light col" ng-if="loggedIn && notGoing" ng-click="checkIn()">I want to Go!</button>
+            <button class="button button-light col" ng-if="loggedIn && !notGoing" >Attending!</button>
         </div>
     </ion-content>
     <div class="bar bar-footer bar-light">

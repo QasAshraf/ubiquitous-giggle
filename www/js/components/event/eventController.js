@@ -6,26 +6,13 @@
     controllerModule.controller('eventController', function ($scope, $stateParams, $cordovaSocialSharing, $timeout, $rootScope, apiService, appStateService) {
         $scope.event = {};
 
-        $scope.zoom = 12;
-
         $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
             $scope.loggedIn = isLoggedIn;
         });
 
         $scope.logout = function () { appStateService.logOut(); $state.go('home') };
 
-        $scope.showMap = true;
         $scope.notGoing = false;
-
-        $rootScope.$on('$stateChangeStart',
-        function (event, toState, toParams, fromState, fromParams) {
-            if (toState.controller == 'eventController') {
-                $scope.showMap = false;
-                $timeout(function () {
-                    $scope.showMap = true;
-                }, 500)
-            }
-        })
 
 
         $scope.twitterShare = function () {
@@ -90,14 +77,7 @@
             );
         }
 
-        $scope.map = {
-            center: {
-                latitude: 53.4764,
-                longitude: -2.2529
-            },
-            zoom: 12
-        };
-
+        
         apiService.getEvent($stateParams.eventId)
         .then(function (data) {
             $scope.notGoing = true;
@@ -110,8 +90,6 @@
                     }
                 }
             }
-
-            $scope.map.center = data.location;
             $scope.event = data;
         },
         function (error) {
