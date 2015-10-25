@@ -14,3 +14,7 @@
 .angular-google-map-container {
     height: 570px;
 }
+
+.content {
+    margin: 10px;
+}
