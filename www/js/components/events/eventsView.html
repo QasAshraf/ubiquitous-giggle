@@ -12,10 +12,14 @@
         </div>
     </ion-content>
     <div class="bar bar-footer bar-light">
-        <button class="button button-stable col col-25" ui-sref="home">Home</button>
-        <button class="button button-stable col col-25" ui-sref="report">My Report</button>
-        <button class="button button-stable col col-25" ng-hide="loggedIn" ui-sref="register">Register</button>
-        <button class="button button-stable col col-25" ng-hide="loggedIn" ui-sref="login">Log In</button>
-        <button class="button button-stable col col-25" ng-show="loggedIn" ng-click="logout()">Log Out</button>
+        <div class="row">
+            <button class="button button-stable col" ui-sref="home">Home</button>
+            <button class="button button-stable col" ui-sref="report">My Report</button>
+            <button class="button button-stable col" ui-sref="leaderboard">Top 10</button>
+            <button class="button button-stable col" ng-hide="loggedIn" ui-sref="register">Register</button>
+            <button class="button button-stable col" ng-hide="loggedIn" ui-sref="login">Log In</button>
+            <button class="button button-stable col" ng-show="loggedIn" ui-sref="badge">Badges</button>
+            <button class="button button-stable col" ng-show="loggedIn" ng-click="logout()">Log Out</button>
+        </div>
     </div>
 </ion-view>

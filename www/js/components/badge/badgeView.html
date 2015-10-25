@@ -1,14 +1,18 @@
-﻿<ion-view title="login">
+﻿<ion-view title="badges">
     <div class="bar bar-header bar-stable">
-        <h1 class="title">Login</h1>
+        <h1 class="title">Your Badges</h1>
     </div>
-    <ion-content class="has-header has-footer content">
-        <div class="list">
-            <label class="item item-input">
-                <input type="email" name="email" placeholder="email" ng-model="loginDetails.email" />
-            </label>
+    <ion-content class="has-header has-footer content ">
+        <div ng-repeat="badge in badges" class="row">
+            <div class="col">
+                <span class="ve-badge badge-{{badge.number}}"></span>
+            </div>
+            <div class="col col-75">
+                <h4>
+                    {{ badge.description }}
+                </h4>
+            </div>
         </div>
-        <button class="button button-stable col" ng-click="login()">login</button>
     </ion-content>
     <div class="bar bar-footer bar-light">
         <div class="row">

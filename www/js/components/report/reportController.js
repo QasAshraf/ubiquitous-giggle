@@ -6,15 +6,25 @@
     controllerModule.controller('reportController', function ($scope, $state, apiService, appStateService) {
         $scope.events = {};
 
-        apiService.getReport('test1')
-        .then(
-            function (data) {
-                $scope.events = data;
-            },
-            function (error) {
 
-            }
-        )
+        window.plugins.imei.get(
+             function (imei) {
+                 $scope.deviceId = imei;
+                 console.log($scope.deviceId);
+                 apiService.getReport($scope.deviceId)
+                    .then(
+                        function (data) {
+                            $scope.events = data;
+                        },
+                        function (error) {
+
+                        }
+                    )
+             },
+             function () {
+                 console.log("error loading imei");
+             }
+           );
 
         $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
             $scope.loggedIn = isLoggedIn;

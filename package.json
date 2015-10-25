@@ -1,7 +1,7 @@
 {
-  "name": "volunteasy",
+  "name": "voluntezy",
   "version": "1.0.0",
-  "description": "volunteasy",
+  "description": "voluntezy",
   "dependencies": {
     "bower": "^1.6.5",
     "gulp": "^3.5.6",

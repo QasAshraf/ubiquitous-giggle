@@ -151,15 +151,53 @@
             })
              .then(
                  function (success) {
-                     console.log(success);
                      deferred.resolve();
                  },
                  function (error) {
-                     console.log(error);
                      deferred.reject();
                  }
              );
 
+            return deferred.promise;
+        }
+
+        service.getLeaderboard = function () {
+            var deferred = $q.defer();
+            var url = '/user/leaderboard';
+            $http({
+                method: 'GET',
+                url: service.baseUrl + url
+            })
+             .then(
+                 function (success) {
+                     deferred.resolve(success.data);
+                 },
+                 function (error) {
+                     deferred.reject();
+                 }
+             );
+            return deferred.promise;
+        }
+
+        service.getUser = function (userId) {
+            var deferred = $q.defer();
+            var url = '/user/username';
+            $http({
+                method: 'GET',
+                url: service.baseUrl + url + '/' + userId,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: ''
+            })
+             .then(
+                 function (success) {
+                     deferred.resolve(success.data[0]);
+                 },
+                 function (error) {
+                     deferred.reject();
+                 }
+             );
             return deferred.promise;
         }
 

@@ -35,15 +35,27 @@
 
         $stateProvider.state('register',
             {
-                url: '/',
+                url: '/register',
                 templateUrl: './js/components/register/registerView.html',
                 controller: 'registerController'
             });
         $stateProvider.state('login',
             {
-                url: '/',
+                url: '/login',
                 templateUrl: './js/components/login/loginView.html',
                 controller: 'loginController'
+            });
+        $stateProvider.state('leaderboard',
+            {
+                url: '/leaderboard',
+                templateUrl: './js/components/leaderboard/leaderboardView.html',
+                controller: 'leaderboardController'
+            });
+        $stateProvider.state('badge',
+            {
+                url: '/badge',
+                templateUrl: './js/components/badge/badgeView.html',
+                controller: 'badgeController'
             });
 
 
