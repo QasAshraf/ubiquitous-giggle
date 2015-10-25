@@ -8,6 +8,12 @@
             email: ""
         };
 
+        $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
+            $scope.loggedIn = isLoggedIn;
+        });
+
+        $scope.logout = function () { appStateService.logOut(); $state.go('home') };
+
         $scope.login = function () {
             apiService.login($scope.loginDetails.email)
             .then(

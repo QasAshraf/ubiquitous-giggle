@@ -23,10 +23,8 @@
         $scope.logout = function () { appStateService.logOut();  $state.go('home') };
 
         $scope.openEvent = function (eventId) {
-            console.log('reportController - Event Clicked!');
             for (var i = 0; i < $scope.events.length; i++) {
                 if ($scope.events[i].id == eventId) {
-                    console.log('reportController - found event');
                     $state.go('event', { eventId: $scope.events[i].id });
                 }
             }

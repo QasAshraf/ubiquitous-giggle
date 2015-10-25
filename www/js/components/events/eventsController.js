@@ -3,10 +3,12 @@
 
     var controllerModule = angular.module('volunteasy.controllers');
 
-    controllerModule.controller('eventsController', function ($scope, $cordovaGeolocation, $location, $state, apiService, appStateService) {
+    controllerModule.controller('eventsController', function ($scope, $cordovaGeolocation, $location, $state, $timeout, $rootScope, apiService, appStateService, uiGmapIsReady) {
         $scope.events = [
 
         ];
+
+        console.log('eventsController init');
 
         $scope.map = {
             center: {
@@ -16,14 +18,25 @@
         };
 
         $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
-            console.log('loggedin watch');
-            console.log(isLoggedIn);
             $scope.loggedIn = isLoggedIn;
         });
 
-        $scope.logout = function () { appStateService.logOut(); $state.go('home') };
+        $scope.showMap = true;
 
-        $scope.getLocalEvents = function () {
+
+        $rootScope.$on('$stateChangeStart',
+        function (event, toState, toParams, fromState, fromParams) {
+            if (toState.controller == 'eventsController') {
+                $scope.showMap = false;
+                $timeout(function () {
+                    $scope.showMap = true;
+                }, 500)
+            }
+        })
+
+        
+        $scope.logout = function () { appStateService.logOut(); $state.go('home') };
+        var getLocalEventsUnscoped = function () {
             var posOptions = { timeout: 1000, enableHighAccuracy: true, maximumAge: 360000 };
 
             $cordovaGeolocation
@@ -43,6 +56,7 @@
                   console.log('eventsController - Couldn\'t get location:');
               });
         }
+        $scope.getLocalEvents = getLocalEventsUnscoped;
 
         $scope.getAllEvents = function () {
             apiService.getAllEvents()
@@ -63,11 +77,11 @@
             }
         }
 
-        $scope.getLocalEvents();
+        getLocalEventsUnscoped();
 
 
         // Test Logging
-        apiService.testMethod();
+        //apiService.testMethod();
 
         //Test Data
         var testEventData = [

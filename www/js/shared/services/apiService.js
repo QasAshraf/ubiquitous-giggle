@@ -20,13 +20,9 @@
             })
             .then(
                 function (success) {
-                    console.log('apiService - get event');
-                    console.log(success);
                     deferred.resolve(success.data);
                 },
                 function (error) {
-                    console.log('apiService - get event failed');
-                    console.log(error);
                     deferred.reject();
                 }
             )
@@ -42,13 +38,9 @@
             })
             .then(
                 function (success) {
-                    console.log('apiService - get all events');
-                    console.log(success);
                     deferred.resolve(success.data);
                 },
                 function (error) {
-                    console.log('apiService - get all events failed');
-                    console.log(error);
                     deferred.reject();
                 }
             )
@@ -65,13 +57,9 @@
             })
             .then(
                 function (success) {
-                    console.log('apiService - get local events');
-                    console.log(success);
                     deferred.resolve(success.data);
                 },
                 function (error) {
-                    console.log('apiService - get local events failed');
-                    console.log(error);
                     deferred.reject();
                 }
             )
@@ -88,13 +76,9 @@
             })
             .then(
                 function (success) {
-                    console.log('apiService - get report succeded')
-                    console.log(success);
                     deferred.resolve(success.data);
                 },
                 function (error) {
-                    console.log('apiService - get report failed')
-                    console.log(error);
                     deferred.reject();
                 }
             );
@@ -123,13 +107,9 @@
             })
             .then(
                 function (success) {
-                    console.log('apiService - register succeded')
-                    console.log(success);
                     deferred.resolve();
                 },
                 function (error) {
-                    console.log('apiService - register failed')
-                    console.log(error);
                     deferred.reject();
                 }
             );
@@ -145,17 +125,12 @@
             })
              .then(
                  function (success) {
-                     console.log('apiService - exist succeded')
-                     console.log(success);
-
                      if (success.data.exists)
                          deferred.resolve();
                      else
                          deferred.reject();
                  },
                  function (error) {
-                     console.log('apiService - exist failed')
-                     console.log(error);
                      deferred.reject();
                  }
              );

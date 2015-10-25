@@ -1,4 +1,4 @@
-﻿<ion-view title="event" ng-controller="eventController">
+﻿<ion-view title="event">
     <div class="bar bar-header bar-stable">
         <h1 class="title">{{ event.name }}</h1>
     </div>
@@ -11,11 +11,13 @@
             <button class="button button-light" ng-click="twitterShare()">Twitter</button>
             <button class="button button-light" ng-click="share()">Share</button>
         </div>
-        <ui-gmap-google-map center='event.location' zoom='zoom'>
-            <ui-gmap-marker idKey="event.id"
-                            coords="event.location" click="markerClick(event)">
-            </ui-gmap-marker>
-        </ui-gmap-google-map>
+        <div ng-if="showMap">
+            <ui-gmap-google-map center='event.location' zoom='zoom'>
+                <ui-gmap-marker idKey="event.id"
+                                coords="event.location" click="markerClick(event)">
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+        </div>
     </ion-content>
     <div class="bar bar-footer bar-light">
         <button class="button button-stable col col-25" ui-sref="home">Home</button>

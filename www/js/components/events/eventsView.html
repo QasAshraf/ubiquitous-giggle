@@ -1,10 +1,10 @@
-﻿<ion-view title="events" ng-controller="eventsController">
+﻿<ion-view title="events">
     <div class="bar bar-header bar-stable">
         <h1 class="title">Events</h1>
     </div>
     <ion-content class="has-header has-footer content">
-        <div data-tap-disabled="true">
-            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <div ng-if="showMap" data-tap-disabled="true">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' refresh="refreshMap" control="control">
                 <ui-gmap-marker ng-repeat="event in events" idKey="event.id" 
                                 coords="event.location" click="markerClick(event)">
                 </ui-gmap-marker>
