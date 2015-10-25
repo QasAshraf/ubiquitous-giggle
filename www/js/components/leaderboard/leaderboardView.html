@@ -14,7 +14,7 @@
                 <strong>Score</strong>
             </div>
         </div>
-        <div class="row" ng-repeat="user in leaderboard | orderBy: '-checkins'">
+        <div class="row" ng-repeat="user in leaderboard | orderBy: '-parseInt(checkins)' ">
             <div class="col">
                 {{ $index + 1 }}
             </div>
