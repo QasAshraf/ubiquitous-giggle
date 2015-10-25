@@ -15,6 +15,7 @@
         $scope.logout = function () { appStateService.logOut(); $state.go('home') };
 
         $scope.showMap = true;
+        $scope.notGoing = false;
 
         $rootScope.$on('$stateChangeStart',
         function (event, toState, toParams, fromState, fromParams) {
@@ -70,6 +71,19 @@
                     }
                 );
         };
+
+        $scope.checkIn = function () {
+            apiService.checkInEvent($scope.event.id, appStateService.getUserId())
+            .then(
+                function (success) {
+
+                },
+                function (error) {
+
+                }
+            );
+        }
+
         $scope.map = {
             center: {
                 latitude: 53.4764,
@@ -80,6 +94,17 @@
 
         apiService.getEvent($stateParams.eventId)
         .then(function (data) {
+            $scope.notGoing = true;
+            if ($scope.loggedIn && data.checkins !== undefined) {
+                var userId = appStateService.getUserId();
+                for (var i = 0; i < data.checkins.length; i++) {
+                    if (data.checkins[i].user.username == userId) {
+                        $scope.notGoing = false;
+                        break;
+                    }
+                }
+            }
+
             $scope.map.center = data.location;
             $scope.event = data;
         },

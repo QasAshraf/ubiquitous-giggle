@@ -10,6 +10,8 @@
         <div class="social-share">
             <button class="button button-light" ng-click="twitterShare()">Twitter</button>
             <button class="button button-light" ng-click="share()">Share</button>
+            <button class="button button-light" ng-if="loggedIn && notGoing" ng-click="checkIn()">I want to Go!</button>
+            <button class="button button-light" ng-if="loggedIn && !notGoing" >Attending!</button>
         </div>
         <div ng-if="showMap" data-tap-disabled="true">
             <ui-gmap-google-map center='map.center' zoom='map.zoom'>

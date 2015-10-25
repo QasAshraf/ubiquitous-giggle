@@ -138,6 +138,31 @@
             return deferred.promise;
         }
 
+        service.checkInEvent = function (eventId, userId) {
+            var deferred = $q.defer();
+            var url = '/checkin/';
+            $http({
+                method: 'POST',
+                url: service.baseUrl + url,
+                data: {
+                    event_id: eventId,
+                    username: userId
+                }
+            })
+             .then(
+                 function (success) {
+                     console.log(success);
+                     deferred.resolve();
+                 },
+                 function (error) {
+                     console.log(error);
+                     deferred.reject();
+                 }
+             );
+
+            return deferred.promise;
+        }
+
         service.testMethod = function () {
             console.log('apiService - testMethod');
         };

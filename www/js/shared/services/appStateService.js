@@ -13,7 +13,7 @@
             appStateService.userId = userId;
         }
 
-        appStateService.getUser = function () {
+        appStateService.getUserId = function () {
             return appStateService.userId;
         }
 
