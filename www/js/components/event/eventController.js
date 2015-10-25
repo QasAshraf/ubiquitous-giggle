@@ -76,10 +76,16 @@
             apiService.checkInEvent($scope.event.id, appStateService.getUserId())
             .then(
                 function (success) {
-
+                    $scope.notGoing = false;
                 },
                 function (error) {
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Error!',
+                        template: 'We were unable to check you in, try again later'
+                    });
+                    alertPopup.then(function (res) {
 
+                    });
                 }
             );
         }
