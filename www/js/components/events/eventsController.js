@@ -12,7 +12,7 @@
             center: {
                 latitude: 53.4764,
                 longitude: -2.2529
-            }, zoom: 8
+            }, zoom: 12
         };
 
         $scope.getLocalEvents = function () {
