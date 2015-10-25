@@ -11,10 +11,10 @@
             <button class="button button-light" ng-click="twitterShare()">Twitter</button>
             <button class="button button-light" ng-click="share()">Share</button>
         </div>
-        <div ng-if="showMap">
-            <ui-gmap-google-map center='event.location' zoom='zoom'>
+        <div ng-if="showMap" data-tap-disabled="true">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
                 <ui-gmap-marker idKey="event.id"
-                                coords="event.location" click="markerClick(event)">
+                                coords="event.location" >
                 </ui-gmap-marker>
             </ui-gmap-google-map>
         </div>

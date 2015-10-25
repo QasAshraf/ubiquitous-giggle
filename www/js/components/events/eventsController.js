@@ -8,8 +8,6 @@
 
         ];
 
-        console.log('eventsController init');
-
         $scope.map = {
             center: {
                 latitude: 53.4764,

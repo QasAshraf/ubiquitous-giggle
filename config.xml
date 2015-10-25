@@ -7,7 +7,7 @@
     <author email="" href="http://voluntezy.com" />
     <content src="index.html" />
     <access origin="*" />
-	<preference name="BackupWebStorage" value="none" />
+    <preference name="BackupWebStorage" value="none" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
@@ -41,4 +41,5 @@
     </platform>
     <icon src="resources\android\icon\drawable-xhdpi-icon.png" />
     <plugin name="cordova-plugin-x-socialsharing" spec="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" />
+    <plugin name="com.plugin.imei" spec="https://github.com/aquto/cordova-plugin-imei.git" />
 </widget>

@@ -10,7 +10,6 @@
 
         $scope.$watch(appStateService.loggedIn, function (isLoggedIn) {
             $scope.loggedIn = isLoggedIn;
-            $scope.resizeMap();
         });
 
         $scope.logout = function () { appStateService.logOut(); $state.go('home') };
@@ -71,10 +70,17 @@
                     }
                 );
         };
-
+        $scope.map = {
+            center: {
+                latitude: 53.4764,
+                longitude: -2.2529
+            },
+            zoom: 12
+        };
 
         apiService.getEvent($stateParams.eventId)
         .then(function (data) {
+            $scope.map.center = data.location;
             $scope.event = data;
         },
         function (error) {

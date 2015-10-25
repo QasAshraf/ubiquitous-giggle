@@ -4,7 +4,7 @@
     </div>
     <ion-content class="has-header has-footer content">
         <div ng-if="showMap" data-tap-disabled="true">
-            <ui-gmap-google-map center='map.center' zoom='map.zoom' refresh="refreshMap" control="control">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' control="control">
                 <ui-gmap-marker ng-repeat="event in events" idKey="event.id" 
                                 coords="event.location" click="markerClick(event)">
                 </ui-gmap-marker>

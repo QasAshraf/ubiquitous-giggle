@@ -18,22 +18,31 @@
 
 
         $scope.register = function () {
-            apiService.register($scope.registerDetails.email, $scope.deviceId)
-            .then(
-                function () {
-                    appStateService.setUser($scope.registerDetails.email);
-                    window.localStorage['userId'] = $scope.registerDetails.email;
-                    var alertPopup = $ionicPopup.alert({
-                        title: 'Success!',
-                        template: 'You have registered'
-                    });
-                    alertPopup.then(function (res) {
+            window.plugins.imei.get(
+              function (imei) {
+                  $scope.deviceId = imei;
+                  console.log($scope.deviceId);
+                  apiService.register($scope.registerDetails.email, $scope.deviceId)
+                    .then(
+                        function () {
+                            appStateService.setUser($scope.registerDetails.email);
+                            window.localStorage['userId'] = $scope.registerDetails.email;
+                            var alertPopup = $ionicPopup.alert({
+                                title: 'Success!',
+                                template: 'You have registered'
+                            });
+                            alertPopup.then(function (res) {
 
-                    });
-                },
-                function (error) {
+                            });
+                        },
+                        function (error) {
 
-                }
+                        }
+                    );
+              },
+              function () {
+                  console.log("error loading imei");
+              }
             );
         }
 
